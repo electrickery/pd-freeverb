@@ -4,6 +4,8 @@
 /* Written by Olaf Matthes <olaf.matthes@gmx.de>.                               */
 /* Get source at http://www.akustische-kunst.org/                               */
 /*                                                                              */
+/* Based on freeverb by Jeremy "Jezar" Wakefield http://www.dreampoint.co.uk    */
+/*                                                                              */
 /* This program is free software; you can redistribute it and/or                */
 /* modify it under the terms of the GNU General Public License                  */
 /* as published by the Free Software Foundation; either version 2               */
@@ -222,11 +224,11 @@ static inline t_float comb_processL(t_freeverb *x, int filteridx, t_float input)
 
 	output = x->x_bufcombL[filteridx][bufidx];
     //FIX_DENORM_NAN_FLOAT(output);
-    fix_denorm_nan_float(output);
+    output = fix_denorm_nan_float(output);
 
     x->x_filterstoreL[filteridx] = (output*x->x_combdamp2) + (x->x_filterstoreL[filteridx]*x->x_combdamp1);
     //FIX_DENORM_NAN_FLOAT(x->x_filterstoreL[filteridx]);
-    fix_denorm_nan_float(x->x_filterstoreL[filteridx]);
+    x->x_filterstoreL[filteridx] = fix_denorm_nan_float(x->x_filterstoreL[filteridx]);
 
 	x->x_bufcombL[filteridx][bufidx] = input + (x->x_filterstoreL[filteridx]*x->x_combfeedback);
 
@@ -242,11 +244,11 @@ static inline t_float comb_processR(t_freeverb *x, int filteridx, t_float input)
 
 	output = x->x_bufcombR[filteridx][bufidx];
     //FIX_DENORM_NAN_FLOAT(output);
-    fix_denorm_nan_float(output);
+    output = fix_denorm_nan_float(output);
 
 	x->x_filterstoreR[filteridx] = (output*x->x_combdamp2) + (x->x_filterstoreR[filteridx]*x->x_combdamp1);
     //FIX_DENORM_NAN_FLOAT(x->x_filterstoreR[filteridx]);
-    fix_denorm_nan_float(x->x_filterstoreR[filteridx]);
+    x->x_filterstoreR[filteridx] = fix_denorm_nan_float(x->x_filterstoreR[filteridx]);
 
 	x->x_bufcombR[filteridx][bufidx] = input + (x->x_filterstoreR[filteridx]*x->x_combfeedback);
 
