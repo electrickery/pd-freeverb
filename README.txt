@@ -30,7 +30,8 @@ Technical Explanation
 
 Freeverb is a simple implementation of the standard Schroeder/Moorer reverb model. 
 I guess the only reason why it sounds better than other reverbs, is simply because 
-I spent a long while doing listening tests in order to create the values found in "tuning.h". It uses 8 comb filters on both the left and right channels), and you 
+I spent a long while doing listening tests in order to create the values found in 
+"tuning.h". It uses 8 comb filters on both the left and right channels), and you 
 might possibly be able to get away with less if CPU power is a serious constraint 
 for you. It then feeds the result of the reverb through 4 allpass filters on both 
 the left and right channels. These "smooth" the sound. Adding more than four allpasses 
