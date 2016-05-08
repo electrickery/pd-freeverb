@@ -80,7 +80,7 @@ static const int allpasstuningL[numallpasses]
 static const int allpasstuningR[numallpasses]
                      = { 556+stereospread, 441+stereospread, 341+stereospread, 225+stereospread };
 
-static char *version = "freeverb~ v1.2.1";
+static char *version = "freeverb~ v1.2.2";
 
 #ifdef PD
 static t_class *freeverb_class;
