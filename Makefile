@@ -6,10 +6,11 @@ freeverb~.class.sources := freeverb~.c
 
 datafiles = \
 freeverb~-help.pd \
+freeverb~-meta.pd \
 output~.pd \
 LICENSE.txt \
 README.txt \
-freeverb~-meta.pd
+voice.wav
 
 
 externalsdir = ..
