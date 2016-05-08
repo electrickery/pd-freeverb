@@ -3,15 +3,20 @@ reverb external for Pure Data and Max/MSP
 written by Olaf Matthes <olaf.matthes@gmx.de>
 
 based on Freeverb, the free, studio-quality reverb SOURCE CODE in the public 
-domain, Written by Jezar at Dreampoint - http://www.dreampoint.co.uk
+domain, Written by Jezar at Dreampoint - http://www.dreampoint.co.uk.
+Freeverb is Public Domain software.
 
-This software is published under GPL terms, see file LICENSE.
+The Pd-Max/MSP portions of this software are published under GPL terms, see file LICENSE.
 
 This is software with ABSOLUTELY NO WARRANTY.
 Use it at your OWN RISK. It's possible to damage e.g. hardware or your hearing
 due to a bug or for other reasons. 
 
-Recent changes:
+Recent changes (1.2.2):
+- fixed the NaN/denormal check,
+- added functionaity to allow filtering on the first delayed signal.
+
+Changes for 1.2.1:
 - added check for NANs
 - added a hand unrolled version of the perform routine for DSP vector sizes that
   are a multiple of 8. This should speed up things a bit
