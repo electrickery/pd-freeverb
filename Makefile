@@ -10,6 +10,7 @@ freeverb~-meta.pd \
 output~.pd \
 LICENSE.txt \
 README.txt \
+README.md \
 voice.wav
 
 
