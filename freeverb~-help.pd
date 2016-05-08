@@ -1,5 +1,5 @@
-#N canvas 747 80 570 530 10;
-#X obj 0 732 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
+#N canvas 486 90 570 530 10;
+#X obj 0 712 cnv 15 552 21 empty empty empty 20 12 0 14 -233017 -33289
 0;
 #X obj 0 373 cnv 3 550 3 empty empty inlets 8 12 0 13 -228856 -1 0
 ;
@@ -19,28 +19,27 @@ Wakefield from http://www.dreampoint.co.uk;
 Wilkes for Pd version 0.42. Fred Jan Kraan adapted the patch 2015-02-02
 ;
 #X text 12 64 VERSION v1.2.2;
-#X restore 496 734 pd META;
-#X obj 0 599 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
+#X restore 496 714 pd META;
+#X obj 0 615 cnv 3 550 3 empty empty outlets 8 12 0 13 -228856 -1 0
 ;
-#X obj 0 636 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
+#X obj 0 673 cnv 3 550 3 empty empty arguments 8 12 0 13 -228856 -1
 0;
-#N canvas 318 423 428 109 Related_objects 0;
+#N canvas 316 424 428 109 Related_objects 0;
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
 #X text 6 1 Related Objects;
-#X restore 205 734 pd Related_objects;
-#X obj 86 384 cnv 17 3 170 empty empty 0 5 9 0 16 -228856 -162280 0
+#X restore 205 714 pd Related_objects;
+#X obj 86 384 cnv 17 3 50 empty empty 0 5 9 0 16 -228856 -162280 0
 ;
 #X obj 0 0 cnv 15 552 40 empty empty freeverb~ 3 12 0 18 -204280 -1
 0;
 #X text 110 381 signal;
-#X obj 86 571 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+#X obj 86 587 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
 ;
-#X obj 86 608 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
+#X obj 86 624 cnv 17 3 17 empty empty 0 5 9 0 16 -228856 -162280 0
 ;
-#X text 110 608 signal;
-#X text 224 608 - ouput of wavetable;
-#X text 110 567 signal;
-#X obj 86 315 output~;
+#X text 110 624 signal;
+#X text 110 583 signal;
+#X obj 74 315 output~;
 #N canvas 1111 348 450 300 load 0;
 #X obj 118 168 soundfiler;
 #X obj 118 98 loadbang;
@@ -56,32 +55,32 @@ Wilkes for Pd version 0.42. Fred Jan Kraan adapted the patch 2015-02-02
 #X restore 431 328 pd load voice;
 #X text 12 23 stereo reverb using the Schroeder/Moorer model;
 #X obj 482 10 freeverb~;
-#X obj 86 101 tabplay~ \$0-waveTable;
+#X obj 74 101 tabplay~ \$0-waveTable;
 #X obj 431 349 table \$0-waveTable;
-#X obj 87 230 freeverb~/freeverb~;
-#X obj 86 57 bng 25 250 50 0 empty empty empty 17 7 0 10 -4034 -258113
+#X obj 75 230 freeverb~/freeverb~;
+#X obj 74 57 bng 25 250 50 0 empty empty empty 17 7 0 10 -4034 -258113
 -1;
 #X msg 400 116 wet \$1;
 #X msg 448 116 dry \$1;
-#X msg 35 101 print;
+#X msg 23 101 print;
 #X obj 403 61 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#N canvas 1 81 450 300 inv 0;
-#X obj 139 40 inlet;
-#X obj 158 179 outlet;
-#X msg 158 124 1;
-#X obj 158 151 -;
-#X obj 114 179 outlet;
-#X obj 139 73 t f b f;
-#X connect 0 0 5 0;
-#X connect 2 0 3 0;
-#X connect 3 0 1 0;
-#X connect 5 0 4 0;
-#X connect 5 1 2 0;
-#X connect 5 2 3 1;
-#X restore 400 89 pd inv;
+#N canvas 1 80 450 300 inv 0;
+#X obj 154 69 inlet;
+#X obj 154 179 outlet;
+#X msg 154 124 1;
+#X obj 154 97 t b f;
+#X obj 154 151 -;
+#X connect 0 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 3 1 4 1;
+#X connect 4 0 1 0;
+#X restore 448 89 pd inv;
+#X floatatom 506 114 5 0 0 0 - - -, f 5;
 #X text 391 45 dry;
 #X text 516 44 wet;
+#X floatatom 407 90 5 0 0 0 - - -, f 5;
 #N canvas 1 80 450 300 percussion 0;
 #X obj 264 129 metro 580;
 #X obj 293 151 delay 120;
@@ -116,84 +115,77 @@ Wilkes for Pd version 0.42. Fred Jan Kraan adapted the patch 2015-02-02
 #X connect 12 0 15 0;
 #X connect 15 0 9 0;
 #X connect 15 1 0 0;
-#X restore 243 101 pd percussion;
-#X text 117 59 play wavefile;
-#X obj 243 57 tgl 25 0 empty empty start 1 15 1 12 -90049 -1 -1 0 1
+#X restore 231 101 pd percussion;
+#X text 105 59 play wavefile;
+#X obj 231 57 tgl 25 0 empty empty start 1 15 1 12 -90049 -1 -1 0 1
 ;
-#X text 278 63 percussion;
+#X text 266 63 percussion;
 #X text 111 401 bypass r;
-#X text 194 402 - bypass reverb processing 0 or 1;
+#X text 223 402 - bypass reverb processing 0 or 1;
 #X text 111 440 dry u;
-#X text 194 440 - level of unprocessed signal \, between 0 and 1 (default:
+#X text 222 441 - level of unprocessed signal \, between 0 and 1 (default:
 0), f 52;
 #X text 111 421 damping s;
-#X text 194 422 - amount of damping of room's surfaces (default: 0.5)
+#X text 222 422 - amount of damping of room's surfaces (default: 0.5)
 ;
-#X text 110 469 freeze t;
-#X text 194 469 - start/stop freeze of reverb tail \, using 1 or 0
+#X text 112 489 freeze t;
+#X text 222 487 - start/stop freeze of reverb tail \, using 1 or 0
 ;
-#X text 194 381 - left input signal;
-#X text 195 566 - right input signal;
-#X obj -1 671 cnv 3 550 3 empty empty more_info 8 12 0 13 -228856 -1
-0;
-#X text 123 703 - moving sample rate from new to dsp;
-#X text 87 649 1: float not used;
-#X text 110 486 print;
-#X text 110 502 roomsize r;
-#X text 110 519 wet p;
-#X text 110 537 width s;
-#N canvas 791 312 613 636 All 0;
-#X msg 25 56 roomsize \$1;
-#X msg 25 101 damping \$1;
-#X msg 25 145 width \$1;
-#X msg 25 189 wet \$1;
-#X msg 25 233 dry \$1;
-#X msg 59 256 print;
-#X msg 78 295 freeze \$1;
-#X msg 83 332 bypass \$1;
-#X obj 83 313 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0 1
+#X text 223 381 - left input signal;
+#X text 247 582 - right input signal;
+#N canvas 497 242 613 636 More_Info 0;
+#X msg 25 67 roomsize \$1;
+#X msg 25 112 damping \$1;
+#X msg 25 156 width \$1;
+#X msg 25 200 wet \$1;
+#X msg 25 244 dry \$1;
+#X msg 59 267 print;
+#X msg 78 306 freeze \$1;
+#X msg 83 344 bypass \$1;
+#X obj 83 325 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0 1
 ;
-#X obj 78 276 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0 1
+#X obj 78 287 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0 1
 ;
-#X text 154 288 - start and stop "freeze" mode (off by default). If
+#X text 154 299 - start and stop "freeze" mode (off by default). If
 on \, reverb tail gets freezed (sample and hold).;
-#X obj 37 210 hsl 60 18 0 1 0 1 empty empty dry 2 9 1 12 -225271 -1
+#X obj 37 221 hsl 60 18 0 1 0 1 empty empty dry 2 9 1 12 -225271 -1
 -1 0 0;
-#X obj 37 166 hsl 60 18 0 1 0 1 empty empty wet 2 9 1 12 -225271 -1
+#X obj 37 177 hsl 60 18 0 1 0 1 empty empty wet 2 9 1 12 -225271 -1
 -1 1770 0;
-#X obj 37 122 hsl 60 18 0 1 0 1 empty empty width 2 9 1 12 -262131
+#X obj 37 133 hsl 60 18 0 1 0 1 empty empty width 2 9 1 12 -262131
 -1 -1 5900 0;
-#X obj 37 78 hsl 60 18 0 2 0 1 empty empty damping 2 9 1 12 -261689
--1 -1 1475 0;
-#X obj 37 33 hsl 60 18 0.11 1.1 0 1 empty empty roomsize 2 9 1 12 -261689
+#X obj 37 89 hsl 60 18 0 2 0 1 empty empty damping 2 9 1 12 -261689
+-1 -1 5900 0;
+#X obj 37 44 hsl 60 18 0.11 1.1 0 1 empty empty roomsize 2 9 1 12 -261689
 -1 -1 4410 0;
-#X text 117 32 - size of the room to be simulated. Larger values result
+#X text 117 43 - size of the room to be simulated. Larger values result
 in longer reverb. Values above 1 will result in feedback or 'room resonance'
 (i.e. reverb getting louder);
-#X floatatom 7 37 3 0 0 0 - - -, f 3;
-#X text 116 124 - stereo width of the reverb \, i.e. how much of the
+#X floatatom 7 48 3 0 0 0 - - -, f 3;
+#X text 116 135 - stereo width of the reverb \, i.e. how much of the
 reverb part from the left and right channel mix. Turning this to 1
 (nearly gives two separate mono reverbs.;
-#X text 115 166 - level of the wet (reverbed) signal \, between 0 and
+#X text 115 177 - level of the wet (reverbed) signal \, between 0 and
 1;
-#X text 113 211 - level of the dry (i.e. unprocessed or original) signal
+#X text 113 222 - level of the dry (i.e. unprocessed or original) signal
 \, between 0 and 1 Note that wet and dry signals mix and thus can cause
 clipping if both are set at high levels.;
-#X text 115 256 - print the current values of these parameters.;
-#X text 157 319 - bypass reverb processing when set to 1 Can be used
+#X text 115 267 - print the current values of these parameters.;
+#X text 157 333 - bypass reverb processing when set to 1 Can be used
 to compare reverbed signal with original signal \, and to save CPU
 when reverb is not needed.;
-#X floatatom 7 82 3 0 0 0 - - -, f 3;
-#X floatatom 7 127 3 0 0 0 - - -, f 3;
-#X floatatom 7 170 3 0 0 0 - - -, f 3;
-#X floatatom 7 214 3 0 0 0 - - -, f 3;
-#X text 114 79 - amount of damping of the room's surfaces. <=1 means
+#X floatatom 7 93 3 0 0 0 - - -, f 3;
+#X floatatom 7 138 3 0 0 0 - - -, f 3;
+#X floatatom 7 181 3 0 0 0 - - -, f 3;
+#X floatatom 7 225 3 0 0 0 - - -, f 3;
+#X text 114 90 - amount of damping of the room's surfaces. <=1 means
 nearly no damping \, resulting in a lot of reflection (long reverb)
 \, >1 means high damping of signals (short reverb).;
-#X obj 27 570 output~;
+#X obj 27 575 output~;
 #X obj 0 0 cnv 15 425 20 empty empty empty 3 12 0 14 -204280 -1 0;
-#X obj 96 423 tabplay~ \$0-waveTable;
-#X obj 96 379 bng 25 250 50 0 empty empty empty 17 7 0 10 -4034 -258113
+#X text 6 1 More messages;
+#X obj 96 462 tabplay~ \$0-waveTable;
+#X obj 96 426 bng 25 250 50 0 empty empty empty 17 7 0 10 -4034 -258113
 -1;
 #N canvas 1 80 450 300 percussion 0;
 #X obj 264 129 metro 580;
@@ -229,21 +221,26 @@ nearly no damping \, resulting in a lot of reflection (long reverb)
 #X connect 12 0 15 0;
 #X connect 15 0 9 0;
 #X connect 15 1 0 0;
-#X restore 253 423 pd percussion;
-#X text 127 386 play wavefile;
-#X obj 253 379 tgl 25 0 empty empty start 1 15 1 12 -90049 -1 -1 0
+#X restore 253 462 pd percussion;
+#X text 127 433 play wavefile;
+#X obj 253 426 tgl 25 0 empty empty start 1 15 1 12 -90049 -1 -1 0
 1;
-#X text 288 385 percussion;
-#X obj 26 512 freeverb~/freeverb~;
-#X text 7 1 All arguments;
-#X connect 0 0 36 0;
-#X connect 1 0 36 0;
-#X connect 2 0 36 0;
-#X connect 3 0 36 0;
-#X connect 4 0 36 0;
-#X connect 5 0 36 0;
-#X connect 6 0 36 0;
-#X connect 7 0 36 0;
+#X text 288 432 percussion;
+#X obj 26 530 freeverb~/freeverb~;
+#X obj 85 364 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 85 382 firstpassfilter \$1;
+#X text 209 374 - change the comb filter output signal. The default
+starts filtering on the second returned signal. This setting allows
+filtering on the first returned (=delayed) signal.;
+#X connect 0 0 37 0;
+#X connect 1 0 37 0;
+#X connect 2 0 37 0;
+#X connect 3 0 37 0;
+#X connect 4 0 37 0;
+#X connect 5 0 37 0;
+#X connect 6 0 37 0;
+#X connect 7 0 37 0;
 #X connect 8 0 7 0;
 #X connect 9 0 6 0;
 #X connect 11 0 4 0;
@@ -256,34 +253,49 @@ nearly no damping \, resulting in a lot of reflection (long reverb)
 #X connect 14 0 23 0;
 #X connect 15 0 0 0;
 #X connect 15 0 17 0;
-#X connect 30 0 36 0;
-#X connect 30 0 36 1;
-#X connect 31 0 30 0;
-#X connect 32 0 36 0;
-#X connect 32 1 36 1;
-#X connect 34 0 32 0;
-#X connect 36 0 28 0;
-#X connect 36 1 28 1;
-#X restore 429 275 pd All arguments;
-#X text 87 690 ToDo: - filtering first delayed signal. Implement as
-mode or arg., f 67;
-#X text 194 487 - print the current values of the above parameters
+#X connect 31 0 37 0;
+#X connect 31 0 37 1;
+#X connect 32 0 31 0;
+#X connect 33 0 37 0;
+#X connect 33 1 37 1;
+#X connect 35 0 33 0;
+#X connect 37 0 28 0;
+#X connect 37 1 28 1;
+#X connect 38 0 39 0;
+#X connect 39 0 37 0;
+#X restore 429 275 pd More_Info;
+#X text 87 686 1: float not used;
+#X text 110 506 print;
+#X text 222 507 - print the current values of the above parameters
 ;
-#X text 194 502 - size of the room to be simulated (default=0.85);
-#X text 194 519 - level of reverbed signal \, between 0 and 1 (default:
+#X text 110 525 roomsize s;
+#X text 222 526 - size of the room to be simulated (default=0.85);
+#X text 110 543 wet r;
+#X text 222 544 - level of reverbed signal \, between 0 and 1 (default:
 0.3);
-#X text 195 537 - stereo width of reverb (default: 1);
-#X connect 18 0 20 0;
-#X connect 18 0 20 1;
-#X connect 20 0 14 0;
-#X connect 20 1 14 1;
-#X connect 21 0 18 0;
-#X connect 22 0 20 0;
-#X connect 23 0 20 0;
-#X connect 24 0 20 0;
+#X text 110 563 width s;
+#X text 222 564 - stereo width of reverb (default: 1);
+#X text 112 470 firstpassfilter f;
+#X text 222 468 - enables comb filtering on first pass \, using 1 or
+0;
+#X obj 86 651 cnv 17 3 17 empty empty 1 5 9 0 16 -228856 -162280 0
+;
+#X text 110 651 signal;
+#X text 224 624 - left output signal;
+#X text 224 651 - right output signal;
+#X connect 17 0 19 0;
+#X connect 17 0 19 1;
+#X connect 19 0 13 0;
+#X connect 19 1 13 1;
+#X connect 20 0 17 0;
+#X connect 21 0 19 0;
+#X connect 22 0 19 0;
+#X connect 23 0 19 0;
+#X connect 24 0 21 0;
+#X connect 24 0 25 0;
+#X connect 24 0 29 0;
+#X connect 25 0 22 0;
 #X connect 25 0 26 0;
-#X connect 26 0 22 0;
-#X connect 26 1 23 0;
-#X connect 29 0 20 0;
-#X connect 29 1 20 1;
-#X connect 31 0 29 0;
+#X connect 30 0 19 0;
+#X connect 30 1 19 1;
+#X connect 32 0 30 0;
