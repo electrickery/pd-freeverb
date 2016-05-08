@@ -5,8 +5,9 @@
 /* Get source at http://www.akustische-kunst.org/                               */
 /*                                                                              */
 /* Based on freeverb by Jeremy "Jezar" Wakefield http://www.dreampoint.co.uk    */
+/* Freeverb is Public Domain software. The Pd/Max/MSP portions are GPL 2 or up. */
 /*                                                                              */
-/* This program is free software; you can redistribute it and/or                */
+/* Parts of this program are free software; you can redistribute it and/or      */
 /* modify it under the terms of the GNU General Public License                  */
 /* as published by the Free Software Foundation; either version 2               */
 /* of the License, or (at your option) any later version.                       */
@@ -130,6 +131,7 @@ typedef struct _freeverb
 
 	int x_allpasstuningL[numallpasses];
 	int x_allpasstuningR[numallpasses];
+    int x_firstpassfilter;
 
 #ifdef PD
 	t_float x_float;
@@ -234,7 +236,10 @@ static inline t_float comb_processL(t_freeverb *x, int filteridx, t_float input)
 
 	if(++x->x_combidxL[filteridx] >= x->x_combtuningL[filteridx]) x->x_combidxL[filteridx] = 0;
 
-	return output;
+    if (x->x_firstpassfilter) 
+        return x->x_filterstoreL[filteridx];
+    else
+        return output;
 }
 
 static inline t_float comb_processR(t_freeverb *x, int filteridx, t_float input)
@@ -254,7 +259,10 @@ static inline t_float comb_processR(t_freeverb *x, int filteridx, t_float input)
 
 	if(++x->x_combidxR[filteridx] >= x->x_combtuningR[filteridx]) x->x_combidxR[filteridx] = 0;
 
-	return output;
+    if (x->x_firstpassfilter) 
+        return x->x_filterstoreR[filteridx];
+    else
+        return output;
 }
 
 /* -------------------- allpass filter stuff ----------------------- */
@@ -688,9 +696,14 @@ static float freeverb_getdb(float f)
     }
 }
 
+static void freeverb_setfirstpassfilter(t_freeverb *x, t_float fpf)
+{
+    x->x_firstpassfilter = (fpf > 0) ? 1 : 0;
+}
+
 static void freeverb_print(t_freeverb *x)
 {
-	post("freeverb~:");
+	post("%s:", version);
 	if(x->x_bypass) {
 		post("  bypass: on");
 	} else post("  bypass: off");
@@ -702,6 +715,7 @@ static void freeverb_print(t_freeverb *x)
 	post("  width: %g %%", x->x_width * 100);
 	post("  wet level: %g dB", freeverb_getdb(freeverb_getwet(x)*scalewet));
 	post("  dry level: %g dB", freeverb_getdb(freeverb_getdry(x)*scaledry));
+	post("  firstpassfilter: %s", (x->x_firstpassfilter) ? "on" : "off");
 }
 
 	// clean up
@@ -795,6 +809,7 @@ void *freeverb_new(t_floatarg f)
 
 	// buffers will be full of rubbish - so we MUST mute them
 	freeverb_mute(x);
+	x->x_firstpassfilter = 0;
 
     return (x);
 }
@@ -815,6 +830,7 @@ void freeverb_tilde_setup(void)
 	class_addmethod(freeverb_class, (t_method)freeverb_setbypass, gensym("bypass"), A_FLOAT, A_NULL);
 	class_addmethod(freeverb_class, (t_method)freeverb_mute, gensym("clear"), A_NULL);
     class_addmethod(freeverb_class, (t_method)freeverb_print, gensym("print"), A_NULL);
+    class_addmethod(freeverb_class, (t_method)freeverb_setfirstpassfilter, gensym("firstpassfilter"), A_FLOAT, A_NULL);
 	logpost(NULL, 4, version);
 }
 
