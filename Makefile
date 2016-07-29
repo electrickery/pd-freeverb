@@ -11,6 +11,7 @@ output~.pd \
 LICENSE.txt \
 README.txt \
 README.md \
+Jezar_readme.txt \
 voice.wav
 
 
