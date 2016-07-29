@@ -80,7 +80,7 @@ static const int allpasstuningL[numallpasses]
 static const int allpasstuningR[numallpasses]
                      = { 556+stereospread, 441+stereospread, 341+stereospread, 225+stereospread };
 
-static char *version = "freeverb~ v1.2.2";
+static char *version = "freeverb~ v1.2.3";
 
 #ifdef PD
 static t_class *freeverb_class;
@@ -280,7 +280,7 @@ static inline t_float allpass_processL(t_freeverb *x, int filteridx, t_float inp
 	
 	bufout = (t_float)x->x_bufallpassL[filteridx][bufidx];
     //FIX_DENORM_NAN_FLOAT(bufout);
-    fix_denorm_nan_float(bufout);
+    bufout = fix_denorm_nan_float(bufout);
 	
 	output = -input + bufout;
 	x->x_bufallpassL[filteridx][bufidx] = input + (bufout*x->x_allpassfeedback);
@@ -299,7 +299,7 @@ static inline t_float allpass_processR(t_freeverb *x, int filteridx, t_float inp
 	
 	bufout = (t_float)x->x_bufallpassR[filteridx][bufidx];
     //FIX_DENORM_NAN_FLOAT(bufout);
-    fix_denorm_nan_float(bufout);
+    bufout = fix_denorm_nan_float(bufout);
 	
 	output = -input + bufout;
 	x->x_bufallpassR[filteridx][bufidx] = input + (bufout*x->x_allpassfeedback);
