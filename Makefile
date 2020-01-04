@@ -1,12 +1,12 @@
 # Makefile for freeverb~ for Makefile.pdlibbuilder
 
-lib.name = freeverb~
+lib.name = freeverb
 
 freeverb~.class.sources := freeverb~.c
 
 datafiles = \
 freeverb~-help.pd \
-freeverb~-meta.pd \
+freeverb-meta.pd \
 output~.pd \
 LICENSE.txt \
 README.txt \
