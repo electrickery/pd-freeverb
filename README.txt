@@ -12,9 +12,14 @@ This is software with ABSOLUTELY NO WARRANTY.
 Use it at your OWN RISK. It's possible to damage e.g. hardware or your hearing
 due to a bug or for other reasons. 
 
-Recent changes (1.2.2):
+Recent changes (1.2.3):
+- renamed library from freeverb~ to freeverb. The tilde in the directory name gives
+  problems with cross-compilation and packaging.
+- updated the Makefile.pdlibbuilder to the latest cross-compilation enabled one.
+
+Changes for 1.2.2:
 - fixed the NaN/denormal check,
-- added functionaity to allow filtering on the first delayed signal.
+- added functionality to allow filtering on the first delayed signal.
 
 Changes for 1.2.1:
 - added check for NANs

@@ -57,7 +57,7 @@ Wilkes for Pd version 0.42. Fred Jan Kraan adapted the patch 2015-02-02
 #X obj 482 10 freeverb~;
 #X obj 74 101 tabplay~ \$0-waveTable;
 #X obj 431 349 table \$0-waveTable;
-#X obj 75 230 freeverb~/freeverb~;
+#X obj 75 230 freeverb/freeverb~;
 #X obj 74 57 bng 25 250 50 0 empty empty empty 17 7 0 10 -4034 -258113
 -1;
 #X msg 400 116 wet \$1;
@@ -226,7 +226,7 @@ nearly no damping \, resulting in a lot of reflection (long reverb)
 #X obj 253 426 tgl 25 0 empty empty start 1 15 1 12 -90049 -1 -1 0
 1;
 #X text 288 432 percussion;
-#X obj 26 530 freeverb~/freeverb~;
+#X obj 26 530 freeverb/freeverb~;
 #X obj 85 364 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 85 382 firstpassfilter \$1;

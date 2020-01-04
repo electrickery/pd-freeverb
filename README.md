@@ -1,7 +1,7 @@
-freeverb~ - Freeverb is an implementation by Olaf Mattes, based on the 
+freeverb - Freeverb is an implementation by Olaf Mattes, based on the 
 Freeverb code put nicely in the public domain by "Jezar".
 
-This git-fork of the Pure-data library freeverb~ is cloned from 
+This git-fork of the Pure-data library freeverb is cloned from 
 https://git.puredata.info/cgit/svn2git/libraries/freeverb~.git, which is 
 the svn-to-git from 
 https://sourceforge.net/p/pure-data/svn/HEAD/tree/trunk/externals/freeverb~/.
