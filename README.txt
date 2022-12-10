@@ -12,6 +12,11 @@ This is software with ABSOLUTELY NO WARRANTY.
 Use it at your OWN RISK. It's possible to damage e.g. hardware or your hearing
 due to a bug or for other reasons. 
 
+Changes for 1.3.0:
+- Updated Makefile to properly conform to tips&tricks,
+- Updated maintainer email,
+- Changed version format to conform with major.minor.bugfix.
+
 Recent changes (1.2.3):
 - renamed library from freeverb~ to freeverb. The tilde in the directory name gives
   problems with cross-compilation and packaging.

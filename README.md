@@ -14,4 +14,4 @@ See the original README.txt for more information.
 For bugs found in this version, please report them to me. Olaf is not 
 responsible for bugs introduced by me.
 
-Fred Jan Kraan fjkraan@xs4all.nl 2016-05-07
+Fred Jan Kraan fjkraan@electrickery.nl 2022-12-10

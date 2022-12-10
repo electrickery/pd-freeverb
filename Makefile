@@ -15,10 +15,5 @@ Jezar_readme.txt \
 voice.wav
 
 
-externalsdir = ..
-# include Makefile.pdlibbuilder from parent or current directory 
--include $(externalsdir)/Makefile.pdlibbuilder 
-
-ifndef Makefile.pdlibbuilder 
-include Makefile.pdlibbuilder 
-endif
+PDLIBBUILDER_DIR=pd-lib-builder/
+include $(PDLIBBUILDER_DIR)/Makefile.pdlibbuilder
